@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marcelo Escalare — Marido de Aluguel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#0b0d10;
+    --bg-1:#15181c;
+    --metal-1:#2e3338;
+    --metal-2:#565d65;
+    --metal-3:#9aa1a8;
+    --metal-hi:#d8dce0;
+    --brass-1:#7a4f1f;
+    --brass-2:#c98a3c;
+    --brass-3:#e8b86b;
+    --text-0:#eef0f2;
+    --text-1:#aab0b6;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html,body{
+    background:var(--bg-0);
+    min-height:100vh;
+    font-family:'Inter',sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 16px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .stage{
+    width:100%;
+    max-width:420px;
+    perspective:1200px;
+  }
+
+  .card{
+    position:relative;
+    border-radius:22px;
+    padding:38px 30px 30px;
+    background:
+      radial-gradient(140% 100% at 15% 0%, rgba(255,255,255,0.06), transparent 50%),
+      linear-gradient(155deg, var(--metal-2) 0%, var(--metal-1) 38%, var(--bg-1) 75%, #0a0c0e 100%);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.18) inset,
+      0 -1px 0 rgba(0,0,0,0.6) inset,
+      0 30px 60px -20px rgba(0,0,0,0.75),
+      0 8px 18px -6px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.07);
+    transform:rotateX(2deg);
+    overflow:hidden;
+  }
+
+  /* brushed metal texture lines */
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:repeating-linear-gradient(
+      100deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    mix-blend-mode:overlay;
+    opacity:0.5;
+    pointer-events:none;
+  }
+
+  /* corner screws */
+  .screw{
+    position:absolute;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--metal-hi), var(--metal-2) 55%, #1a1d20 100%);
+    box-shadow:0 1px 2px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,0,0,0.4);
+  }
+  .screw::after{
+    content:"";
+    position:absolute;
+    top:50%;left:50%;
+    width:6px;height:1px;
+    background:rgba(20,20,20,0.7);
+    transform:translate(-50%,-50%) rotate(38deg);
+  }
+  .screw.tl{top:14px;left:14px;}
+  .screw.tr{top:14px;right:14px;}
+  .screw.bl{bottom:14px;left:14px;}
+  .screw.br{bottom:14px;right:14px;}
+
+  .top-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:26px;
+    position:relative;
+    z-index:2;
+  }
+
+  .badge{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .badge-icon{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(145deg, var(--brass-3), var(--brass-2) 55%, var(--brass-1));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.5) inset,
+      0 -2px 4px rgba(0,0,0,0.35) inset,
+      0 4px 10px rgba(0,0,0,0.5);
+  }
+
+  .badge-icon svg{width:20px;height:20px;}
+
+  .badge-text{
+    font-family:'Inter',sans-serif;
+    font-size:10.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--text-1);
+    font-weight:600;
+  }
+
+  .status-pill{
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#bfe6c4;
+    background:rgba(91,184,109,0.12);
+    border:1px solid rgba(91,184,109,0.35);
+    padding:5px 10px;
+    border-radius:100px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .status-pill::before{
+    content:"";
+    width:6px;height:6px;
+    border-radius:50%;
+    background:#5bb86d;
+    box-shadow:0 0 6px #5bb86d;
+  }
+
+  .name-block{
+    position:relative;
+    z-index:2;
+    margin-bottom:6px;
+  }
+
+  .name{
+    font-family:'Oswald',sans-serif;
+    font-size:32px;
+    font-weight:700;
+    letter-spacing:0.01em;
+    line-height:1.05;
+    text-transform:uppercase;
+    background:linear-gradient(180deg, var(--metal-hi) 0%, var(--metal-3) 45%, var(--metal-2) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 1px 0 rgba(255,255,255,0.15);
+    filter:drop-shadow(0 2px 1px rgba(0,0,0,0.8));
+  }
+
+  .role{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    color:var(--brass-3);
+    letter-spacing:0.04em;
+    margin-top:4px;
+  }
+
+  .divider{
+    height:1px;
+    margin:20px 0;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    position:relative;
+    z-index:2;
+  }
+
+  .tagline{
+    font-size:13.5px;
+    line-height:1.55;
+    color:var(--text-1);
+    margin-bottom:22px;
+    position:relative;
+    z-index:2;
+  }
+
+  .services{
+    position:relative;
+    z-index:2;
+    margin-bottom:24px;
+  }
+
+  .services-label{
+    font-size:10.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass-3);
+    font-weight:600;
+    margin-bottom:12px;
+  }
+
+  .chip-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .chip{
+    font-size:12px;
+    color:var(--text-0);
+    background:linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border:1px solid rgba(255,255,255,0.1);
+    padding:7px 12px;
+    border-radius:9px;
+    font-weight:500;
+    box-shadow:0 1px 0 rgba(255,255,255,0.05) inset, 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .actions{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 18px;
+    border-radius:13px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn:active{transform:translateY(2px) scale(0.99);}
+
+  .btn-primary{
+    color:#241404;
+    background:linear-gradient(160deg, var(--brass-3) 0%, var(--brass-2) 55%, #a8701f 100%);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.55) inset,
+      0 -3px 6px rgba(0,0,0,0.25) inset,
+      0 8px 16px -4px rgba(170,112,30,0.45);
+  }
+  .btn-primary:active{
+    box-shadow:0 -2px 4px rgba(0,0,0,0.3) inset, 0 2px 6px rgba(170,112,30,0.3);
+  }
+
+  .btn-secondary{
+    color:var(--text-0);
+    background:linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+    border:1px solid rgba(255,255,255,0.14);
+    box-shadow:0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 14px -6px rgba(0,0,0,0.5);
+  }
+
+  .btn svg{width:18px;height:18px;flex-shrink:0;}
+
+  .footer-note{
+    text-align:center;
+    margin-top:18px;
+    font-size:11px;
+    color:#5b6168;
+    letter-spacing:0.03em;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .card{
+      animation:settle 0.7s cubic-bezier(.2,.8,.2,1) both;
+    }
+  }
+  @keyframes settle{
+    from{opacity:0; transform:translateY(14px) rotateX(8deg);}
+    to{opacity:1; transform:translateY(0) rotateX(2deg);}
+  }
+
+  a.btn:focus-visible, button.btn:focus-visible{
+    outline:2px solid var(--brass-3);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="card">
+    <div class="screw tl"></div>
+    <div class="screw tr"></div>
+    <div class="screw bl"></div>
+    <div class="screw br"></div>
+
+    <div class="top-row">
+      <div class="badge">
+        <div class="badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.7 6.3a1 1 0 0 0-1.4 0L12 7.6 11.4 7a1 1 0 0 0-1.4 0l-1 1a1 1 0 0 0 0 1.4l.6.6-6 6a2.1 2.1 0 0 0 3 3l6-6 .6.6a1 1 0 0 0 1.4 0l1-1a1 1 0 0 0 0-1.4l-.6-.6 1.3-1.3a1 1 0 0 0 0-1.4l-1.6-1.6z" fill="#241404"/>
+          </svg>
+        </div>
+        <div class="badge-text">Profissional<br>Qualificado</div>
+      </div>
+      <div class="status-pill">Disponível</div>
+    </div>
+
+    <div class="name-block">
+      <div class="name">Marcelo<br>Escalare</div>
+      <div class="role">Marido de Aluguel — É com a gente!</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="tagline">
+      Soluções rápidas, seguras e de confiança para o seu dia a dia.
+      Serviço com qualidade e garantia em toda visita.
+    </p>
+
+    <div class="services">
+      <div class="services-label">Serviços</div>
+      <div class="chip-grid">
+        <span class="chip">Hidráulica</span>
+        <span class="chip">Elétrica</span>
+        <span class="chip">Vazamentos</span>
+        <span class="chip">Desentupimento</span>
+        <span class="chip">Pintura</span>
+        <span class="chip">Instalações</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/5511970320245" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#241404"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.33C8.5 21.5 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.43-4.4-1.18l-.32-.18-3.07.8.82-3-.2-.32A7.94 7.94 0 0 1 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8zm4.4-5.6c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.18-.7-.62-1.18-1.4-1.32-1.64-.14-.24-.02-.37.1-.5.12-.12.27-.32.4-.48.13-.16.18-.28.27-.46.08-.18.04-.34-.04-.46-.08-.12-.5-1.2-.68-1.64-.18-.42-.36-.36-.5-.37h-.43c-.15 0-.39.06-.6.3-.21.24-.8.78-.8 1.9 0 1.12.82 2.2.94 2.36.12.16 1.6 2.44 3.88 3.32 2.27.88 2.27.59 2.68.55.4-.04 1.3-.53 1.48-1.04.18-.5.18-.94.13-1.04-.05-.1-.2-.16-.43-.27z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a class="btn btn-secondary" href="tel:+5511970320245">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (11) 97032-0245
+      </a>
+    </div>
+
+    <div class="footer-note">Atendimento rápido · Honestidade · Compromisso</div>
+  </div>
+</div>
+
+</body>
+</html>
