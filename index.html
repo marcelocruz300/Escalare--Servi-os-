@@ -3,22 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marcelo Escalare — Marido de Aluguel</title>
+<title>Escalare Serviços — Marido de Aluguel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg-0:#0b0d10;
-    --bg-1:#15181c;
-    --metal-1:#2e3338;
-    --metal-2:#565d65;
-    --metal-3:#9aa1a8;
-    --metal-hi:#d8dce0;
-    --brass-1:#7a4f1f;
-    --brass-2:#c98a3c;
-    --brass-3:#e8b86b;
-    --text-0:#eef0f2;
-    --text-1:#aab0b6;
+    --bg-0:#060708;
+    --bg-1:#101214;
+    --metal-1:#33383d;
+    --metal-2:#6b7278;
+    --metal-3:#aab0b6;
+    --metal-hi:#f1f3f5;
+    --gold-1:#7d5a1e;
+    --gold-2:#caa24a;
+    --gold-3:#f0d896;
+    --gold-hi:#fff6df;
+    --text-0:#f4f5f6;
+    --text-1:#9aa0a6;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -42,17 +43,19 @@
 
   .card{
     position:relative;
-    border-radius:22px;
-    padding:38px 30px 30px;
+    border-radius:24px;
+    padding:40px 32px 32px;
     background:
-      radial-gradient(140% 100% at 15% 0%, rgba(255,255,255,0.06), transparent 50%),
-      linear-gradient(155deg, var(--metal-2) 0%, var(--metal-1) 38%, var(--bg-1) 75%, #0a0c0e 100%);
+      radial-gradient(140% 100% at 15% 0%, rgba(255,255,255,0.07), transparent 50%),
+      linear-gradient(155deg, var(--metal-2) 0%, var(--metal-1) 35%, var(--bg-1) 72%, #050607 100%);
     box-shadow:
-      0 1px 0 rgba(255,255,255,0.18) inset,
-      0 -1px 0 rgba(0,0,0,0.6) inset,
-      0 30px 60px -20px rgba(0,0,0,0.75),
-      0 8px 18px -6px rgba(0,0,0,0.6);
-    border:1px solid rgba(255,255,255,0.07);
+      0 1px 0 rgba(255,255,255,0.22) inset,
+      0 -1px 0 rgba(0,0,0,0.65) inset,
+      0 2px 0 rgba(202,162,74,0.08) inset,
+      0 45px 80px -25px rgba(0,0,0,0.85),
+      0 12px 24px -8px rgba(0,0,0,0.7),
+      0 0 0 1px rgba(202,162,74,0.06);
+    border:1px solid rgba(255,255,255,0.08);
     transform:rotateX(2deg);
     overflow:hidden;
   }
@@ -115,7 +118,7 @@
     width:38px;
     height:38px;
     border-radius:10px;
-    background:linear-gradient(145deg, var(--brass-3), var(--brass-2) 55%, var(--brass-1));
+    background:linear-gradient(145deg, var(--gold-3), var(--gold-2) 55%, var(--gold-1));
     display:flex;
     align-items:center;
     justify-content:center;
@@ -166,24 +169,35 @@
 
   .name{
     font-family:'Oswald',sans-serif;
-    font-size:32px;
+    font-size:30px;
     font-weight:700;
-    letter-spacing:0.01em;
-    line-height:1.05;
+    letter-spacing:0.02em;
+    line-height:1.08;
     text-transform:uppercase;
     background:linear-gradient(180deg, var(--metal-hi) 0%, var(--metal-3) 45%, var(--metal-2) 100%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
-    text-shadow:0 1px 0 rgba(255,255,255,0.15);
-    filter:drop-shadow(0 2px 1px rgba(0,0,0,0.8));
+    text-shadow:0 1px 0 rgba(255,255,255,0.18);
+    filter:drop-shadow(0 2px 1px rgba(0,0,0,0.85));
+  }
+
+  .name-rule{
+    width:46px;
+    height:3px;
+    border-radius:2px;
+    margin:10px 0 8px;
+    background:linear-gradient(90deg, var(--gold-3), var(--gold-2));
+    box-shadow:0 1px 4px rgba(202,162,74,0.5);
+    position:relative;
+    z-index:2;
   }
 
   .role{
     font-family:'Inter',sans-serif;
     font-size:13px;
     font-weight:500;
-    color:var(--brass-3);
+    color:var(--gold-3);
     letter-spacing:0.04em;
     margin-top:4px;
   }
@@ -215,7 +229,7 @@
     font-size:10.5px;
     letter-spacing:0.16em;
     text-transform:uppercase;
-    color:var(--brass-3);
+    color:var(--gold-3);
     font-weight:600;
     margin-bottom:12px;
   }
@@ -235,6 +249,55 @@
     border-radius:9px;
     font-weight:500;
     box-shadow:0 1px 0 rgba(255,255,255,0.05) inset, 0 2px 6px rgba(0,0,0,0.3);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  .region{
+    position:relative;
+    z-index:2;
+    margin-bottom:22px;
+  }
+
+  .region-main{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--text-0);
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin-bottom:4px;
+  }
+
+  .region-sub{
+    font-size:12px;
+    color:var(--text-1);
+    padding-left:21px;
+  }
+
+  .highlights{
+    position:relative;
+    z-index:2;
+    margin-bottom:26px;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+
+  .highlight-item{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:13px;
+    color:var(--text-0);
+    font-weight:500;
+  }
+
+  .highlight-item .star{
+    color:var(--gold-3);
+    font-size:13px;
+    filter:drop-shadow(0 1px 2px rgba(202,162,74,0.5));
   }
 
   .actions{
@@ -265,14 +328,17 @@
 
   .btn-primary{
     color:#241404;
-    background:linear-gradient(160deg, var(--brass-3) 0%, var(--brass-2) 55%, #a8701f 100%);
+    font-size:14px;
+    letter-spacing:0.03em;
+    background:linear-gradient(160deg, var(--gold-hi) 0%, var(--gold-3) 30%, var(--gold-2) 65%, var(--gold-1) 100%);
     box-shadow:
-      0 1px 0 rgba(255,255,255,0.55) inset,
-      0 -3px 6px rgba(0,0,0,0.25) inset,
-      0 8px 16px -4px rgba(170,112,30,0.45);
+      0 1px 0 rgba(255,255,255,0.65) inset,
+      0 -3px 6px rgba(0,0,0,0.28) inset,
+      0 10px 20px -5px rgba(202,162,74,0.5),
+      0 0 0 1px rgba(202,162,74,0.3);
   }
   .btn-primary:active{
-    box-shadow:0 -2px 4px rgba(0,0,0,0.3) inset, 0 2px 6px rgba(170,112,30,0.3);
+    box-shadow:0 -2px 4px rgba(0,0,0,0.32) inset, 0 3px 8px rgba(202,162,74,0.35);
   }
 
   .btn-secondary{
@@ -303,8 +369,167 @@
   }
 
   a.btn:focus-visible, button.btn:focus-visible{
-    outline:2px solid var(--brass-3);
+    outline:2px solid var(--gold-3);
     outline-offset:3px;
+  }
+
+  @media (max-width:380px){
+    .card{padding:32px 22px 26px;}
+    .name{font-size:26px;}
+    .chip{font-size:11.3px; padding:6px 10px;}
+    .btn{font-size:13.5px; padding:14px 14px;}
+  }
+
+  /* ===== Gallery ===== */
+  .gallery-section{
+    position:relative;
+    z-index:2;
+    margin-bottom:22px;
+  }
+
+  .photo-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .photo-item{
+    position:relative;
+    border-radius:11px;
+    overflow:hidden;
+    aspect-ratio:1/1;
+    border:1px solid rgba(255,255,255,0.1);
+    cursor:pointer;
+    background:var(--metal-1);
+  }
+
+  .photo-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform 0.3s ease;
+  }
+
+  .photo-item:active img{
+    transform:scale(1.05);
+  }
+
+  .photo-item .photo-caption{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    padding:8px 10px 7px;
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--text-0);
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,0.75));
+  }
+
+  .video-row{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:4px;
+    scrollbar-width:none;
+  }
+  .video-row::-webkit-scrollbar{display:none;}
+
+  .video-item{
+    position:relative;
+    flex:0 0 auto;
+    width:108px;
+    height:140px;
+    border-radius:11px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.1);
+    cursor:pointer;
+    background:var(--metal-1);
+  }
+
+  .video-item video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    pointer-events:none;
+  }
+
+  .video-item .play-badge{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .video-item .play-badge svg{
+    width:34px;
+    height:34px;
+    filter:drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+  }
+
+  .video-item .video-label{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    padding:6px 8px;
+    font-size:9.5px;
+    font-weight:600;
+    color:var(--text-0);
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
+  }
+
+  /* Lightbox / modal */
+  .lightbox-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(4,5,6,0.92);
+    backdrop-filter:blur(4px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+    padding:24px;
+  }
+
+  .lightbox-overlay.open{
+    display:flex;
+  }
+
+  .lightbox-content{
+    position:relative;
+    max-width:420px;
+    width:100%;
+  }
+
+  .lightbox-content img,
+  .lightbox-content video{
+    width:100%;
+    max-height:80vh;
+    border-radius:14px;
+    display:block;
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.9);
+  }
+
+  .lightbox-close{
+    position:absolute;
+    top:-44px;
+    right:0;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:linear-gradient(160deg, var(--gold-3), var(--gold-1));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 6px 14px rgba(0,0,0,0.5);
+  }
+
+  .lightbox-close svg{
+    width:16px;
+    height:16px;
   }
 </style>
 </head>
@@ -324,49 +549,180 @@
             <path d="M14.7 6.3a1 1 0 0 0-1.4 0L12 7.6 11.4 7a1 1 0 0 0-1.4 0l-1 1a1 1 0 0 0 0 1.4l.6.6-6 6a2.1 2.1 0 0 0 3 3l6-6 .6.6a1 1 0 0 0 1.4 0l1-1a1 1 0 0 0 0-1.4l-.6-.6 1.3-1.3a1 1 0 0 0 0-1.4l-1.6-1.6z" fill="#241404"/>
           </svg>
         </div>
-        <div class="badge-text">Profissional<br>Qualificado</div>
+        <div class="badge-text">+20 Anos de<br>Experiência</div>
       </div>
       <div class="status-pill">Disponível</div>
     </div>
 
     <div class="name-block">
-      <div class="name">Marcelo<br>Escalare</div>
-      <div class="role">Marido de Aluguel — É com a gente!</div>
+      <div class="name">Escalare<br>Serviços</div>
+      <div class="name-rule"></div>
+      <div class="role">Marido de Aluguel • É com a gente!</div>
     </div>
 
     <div class="divider"></div>
 
     <p class="tagline">
-      Soluções rápidas, seguras e de confiança para o seu dia a dia.
-      Serviço com qualidade e garantia em toda visita.
+      Consertos rápidos para sua casa ou empresa. Atendimento honesto,
+      serviço com garantia e mais de 20 anos de experiência.
     </p>
 
     <div class="services">
       <div class="services-label">Serviços</div>
       <div class="chip-grid">
-        <span class="chip">Hidráulica</span>
-        <span class="chip">Elétrica</span>
-        <span class="chip">Vazamentos</span>
-        <span class="chip">Desentupimento</span>
-        <span class="chip">Pintura</span>
-        <span class="chip">Instalações</span>
+        <span class="chip">🔧 Hidráulica</span>
+        <span class="chip">⚡ Elétrica</span>
+        <span class="chip">🚿 Troca de Chuveiros</span>
+        <span class="chip">🚰 Vazamentos</span>
+        <span class="chip">🪠 Desentupimentos</span>
+        <span class="chip">🚽 Caixa Acoplada</span>
+        <span class="chip">🎨 Pintura</span>
+        <span class="chip">🛠️ Pequenos Reparos</span>
       </div>
+    </div>
+
+    <div class="region">
+      <div class="services-label">Região Atendida</div>
+      <div class="region-main">📍 São Paulo Capital</div>
+      <div class="region-sub">Centro • Zona Norte</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="gallery-section">
+      <div class="services-label">Galeria de Trabalhos</div>
+      <div class="photo-grid">
+        <div class="photo-item" onclick="openLightbox('img', 'assets/foto1.jpg')">
+          <img src="assets/foto1.jpg" alt="Profissional em instalação" loading="lazy">
+          <div class="photo-caption">Instalação</div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img', 'assets/foto2.jpg')">
+          <img src="assets/foto2.jpg" alt="Pintura finalizada" loading="lazy">
+          <div class="photo-caption">Pintura Finalizada</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-section">
+      <div class="services-label">Vídeos dos Serviços</div>
+      <div class="video-row">
+        <div class="video-item" onclick="openLightbox('video', 'assets/v1_servico.mp4')">
+          <video src="assets/v1_servico.mp4" muted preload="metadata"></video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24" fill="#fff6df"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-label">Serviço 1</div>
+        </div>
+        <div class="video-item" onclick="openLightbox('video', 'assets/v2_servico.mp4')">
+          <video src="assets/v2_servico.mp4" muted preload="metadata"></video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24" fill="#fff6df"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-label">Serviço 2</div>
+        </div>
+        <div class="video-item" onclick="openLightbox('video', 'assets/v3_servico.mp4')">
+          <video src="assets/v3_servico.mp4" muted preload="metadata"></video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24" fill="#fff6df"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-label">Serviço 3</div>
+        </div>
+        <div class="video-item" onclick="openLightbox('video', 'assets/v4_servico.mp4')">
+          <video src="assets/v4_servico.mp4" muted preload="metadata"></video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24" fill="#fff6df"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-label">Serviço 4</div>
+        </div>
+        <div class="video-item" onclick="openLightbox('video', 'assets/v5_servico.mp4')">
+          <video src="assets/v5_servico.mp4" muted preload="metadata"></video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24" fill="#fff6df"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-label">Serviço 5</div>
+        </div>
+        <div class="video-item" onclick="openLightbox('video', 'assets/v6_servico.mp4')">
+          <video src="assets/v6_servico.mp4" muted preload="metadata"></video>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24" fill="#fff6df"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-label">Serviço 6</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="highlights">
+      <div class="highlight-item"><span class="star">⭐</span> Atendimento Rápido</div>
+      <div class="highlight-item"><span class="star">⭐</span> Qualidade e Garantia</div>
+      <div class="highlight-item"><span class="star">⭐</span> Honestidade e Compromisso</div>
     </div>
 
     <div class="actions">
       <a class="btn btn-primary" href="https://wa.me/5511970320245" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="#241404"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.33C8.5 21.5 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.43-4.4-1.18l-.32-.18-3.07.8.82-3-.2-.32A7.94 7.94 0 0 1 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8zm4.4-5.6c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.18-.7-.62-1.18-1.4-1.32-1.64-.14-.24-.02-.37.1-.5.12-.12.27-.32.4-.48.13-.16.18-.28.27-.46.08-.18.04-.34-.04-.46-.08-.12-.5-1.2-.68-1.64-.18-.42-.36-.36-.5-.37h-.43c-.15 0-.39.06-.6.3-.21.24-.8.78-.8 1.9 0 1.12.82 2.2.94 2.36.12.16 1.6 2.44 3.88 3.32 2.27.88 2.27.59 2.68.55.4-.04 1.3-.53 1.48-1.04.18-.5.18-.94.13-1.04-.05-.1-.2-.16-.43-.27z"/></svg>
-        Falar no WhatsApp
+        Solicitar Orçamento no WhatsApp
       </a>
       <a class="btn btn-secondary" href="tel:+5511970320245">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        (11) 97032-0245
+        📞 (11) 97032-0245
       </a>
     </div>
 
-    <div class="footer-note">Atendimento rápido · Honestidade · Compromisso</div>
+    <div class="footer-note">
+      Seu problema resolvido com qualidade e confiança.<br>
+      <strong style="color:var(--text-1);">ESCALARE SERVIÇOS • É COM A GENTE!</strong>
+    </div>
   </div>
 </div>
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightboxOnOverlay(event)">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#241404" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="lightbox-media"></div>
+  </div>
+</div>
+
+<script>
+  function openLightbox(type, src){
+    const lb = document.getElementById('lightbox');
+    const mediaContainer = document.getElementById('lightbox-media');
+    mediaContainer.innerHTML = '';
+
+    if(type === 'img'){
+      const img = document.createElement('img');
+      img.src = src;
+      mediaContainer.appendChild(img);
+    } else {
+      const video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      mediaContainer.appendChild(video);
+    }
+
+    lb.classList.add('open');
+  }
+
+  function closeLightbox(){
+    const lb = document.getElementById('lightbox');
+    const mediaContainer = document.getElementById('lightbox-media');
+    const video = mediaContainer.querySelector('video');
+    if(video){ video.pause(); }
+    mediaContainer.innerHTML = '';
+    lb.classList.remove('open');
+  }
+
+  function closeLightboxOnOverlay(e){
+    if(e.target.id === 'lightbox'){
+      closeLightbox();
+    }
+  }
+</script>
 
 </body>
 </html>
